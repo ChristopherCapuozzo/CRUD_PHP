@@ -1,0 +1,6 @@
+{
+    "rpc.appName": "Visual Studio Code",
+    "rpc.detailsIdling": "zZz",
+    "rpc.detailsViewing": "Dans {workspace} {problems}",
+    "rpc.idleTimeout": 3000
+}
