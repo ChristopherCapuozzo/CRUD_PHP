@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="modules/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="modules/css/style.css">
-    
+    <link rel="stylesheet" href="modules/js/bootstrap.js">
     <title>ACCUIEL</title>
 </head>
 <body>
@@ -22,7 +22,8 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="menu/menuAccount.php">Menu Connexion</a>
+            <a class="nav-link" href="pages/menuAccount.php">Connexion</a>
+            <a class="nav-link" href="pages/inscription.php">Inscription</a>
             <a class="nav-link" href="pages/administrateur.php">Administrateur</a>
           </div>
         </div>

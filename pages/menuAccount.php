@@ -12,8 +12,8 @@
 <body>
     <h4 class="text-center mt-5">Qui êtes-vous ?</h4>
     <div class="d-flex">
-        <?php require_once "etudiant_menu.php" ?>
-        <?php require_once "formateur_menu.php" ?>
+        <?php require_once "../menu/etudiant_menu.php" ?>
+        <?php require_once "../menu/formateur_menu.php" ?>
     </div>
     <div class="text-center mt-2">
     <a class="container btn btn-danger" href="../index.php">RETOUR</a>
