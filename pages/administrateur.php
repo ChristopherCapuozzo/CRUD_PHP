@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -69,8 +72,8 @@ function connexion_admin(){
         $password = $ligne['pass'];
 
         if($emailUtilisateur === $email && $passwordUtilisateur === $password){
-          $_SESSION['email'] = $emailUtilisateur;
-          header("Location: connecter.php");
+          $_SESSION['email-admin'] = $emailUtilisateur;
+          header("Location: ../admin/admin_panel.php");
         }else{
           echo "<div class='mt-3 container'>
           <p class='alert alert-danger'>Erreur de connextion : Merci de vérifier vos identifiant !</p>

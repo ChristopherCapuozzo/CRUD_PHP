@@ -38,7 +38,7 @@
 /* #etudiant.php */
 
 .card-etudiant {
-    width: 20%;
+    width: 50%;
 }
 
 .img-etudiant {
@@ -54,7 +54,7 @@
 /* #formateur.php */
 
 .card-formateur {
-    width: 20%;
+    width: 50%;
 }
 
 .img-formateur {
@@ -70,7 +70,7 @@
 /* #Administrateur.php */
 
 .card-admin {
-    width: 20%;
+    width: 50%;
 }
 
 .img-admin {
@@ -86,7 +86,7 @@
 /* #connecter.php */
 
 .card-connecter {
-    width: 20%;
+    width: 50%;
 }
 
 .img-connecter {
@@ -98,3 +98,12 @@
     background-color: green;
 }
 
+/* #admin.php */
+
+.card-create {
+    width: 20%;
+}
+
+.background-create {
+    background-color: green;
+}

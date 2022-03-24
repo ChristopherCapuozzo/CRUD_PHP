@@ -1,5 +1,7 @@
 <?php
-
+if(isset($_SESSION['email'])){
+  echo "Bienvenue " . $_SESSION['email'];
+}
 ?>
 
 <!doctype html>
@@ -9,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../modules/css/bootstrap.css" rel="stylesheet">
     <link href="../modules/css/style.css" rel="stylesheet" >
-    <title>CONNEXION - ÉTUDIANT</title>
+    <title>ADMIN - AJOUT</title>
 </head>
 <body>
   
+
 <div class="container-fluid card-etudiant">
   <form action="" method="post">
     <div class="text-center mt-5">
@@ -21,19 +24,19 @@
     <div class="container background-etudiant rounded text-center">
       <img class="img-etudiant mt-1 rounded-circle" src="../modules/img/etudiant.png" alt="">
       <div>
-        <label class="form-label text-bold pt-2" for="email-create">Adresse-email</label>
-        <input class="form-control" type="email" name="email-create" id="email-create" placeholder="exemple@etudiant.etu">
+        <label class="form-label text-bold pt-2" for="email-create-etudiant">Adresse-email</label>
+        <input class="form-control" type="email" name="email-create-etudiant" id="email-create-etudiant" placeholder="nom.prenom-etudiant@school.etu">
       </div>
       <div class="mt-3">
-        <label class="form-label text-bold" for="password-create">Mots de passe</label>
-        <input class="form-control" type="password" name="password-create" id="password-create" placeholder="Votre mots de passe">
+        <label class="form-label text-bold" for="password-create-etudiant">Mots de passe</label>
+        <input class="form-control" type="password" name="password-create-etudiant" id="password-create-etudiant" placeholder="Crée un mdp">
       </div>
       <div class="mt-1">
-        <input class="form-control" type="password" name="password-confirm" id="password-confirm" placeholder="Répeter votre mots de passe">
+        <input class="form-control" type="password" name="password-confirm-etudiant" id="password-confirm-etudiant" placeholder="Répeter le mdp">
       </div>
       <a class="none-link" href="">MDP oubliez ?</a>
       <br>
-      <a href="../index.php" class="btn btn-danger mt-2 mb-3">RETOUR</a>
+      <a href="liste_etudiant.php" class="btn btn-danger mt-2 mb-3">RETOUR</a>
       <button class="btn btn-success mt-2 mb-3" type="submit" name="btn-etudiant-create">INSCRIPTION</button>
     </div>
   </form>
