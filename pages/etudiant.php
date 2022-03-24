@@ -102,7 +102,7 @@ function connexion_etudiant(){
 }
 
 if(isset($_POST['btn-etudiant-connexion'])){
-  connexion_etudient();
+  connexion_etudiant();
 }
 
 ?>

@@ -1,7 +1,5 @@
 <?php
-if(isset($_SESSION['email'])){
-  echo "Bienvenue " . $_SESSION['email'];
-}
+session_start();
 ?>
 
 <!doctype html>
@@ -16,7 +14,7 @@ if(isset($_SESSION['email'])){
 <body>
   
 
-<div class="container-fluid card-etudiant">
+<div class="container-fluid card-etudiant" id="false">
   <form action="" method="post">
     <div class="text-center mt-5">
       <h4>Inscription Étudiant</h4>
@@ -24,17 +22,16 @@ if(isset($_SESSION['email'])){
     <div class="container background-etudiant rounded text-center">
       <img class="img-etudiant mt-1 rounded-circle" src="../modules/img/etudiant.png" alt="">
       <div>
-        <label class="form-label text-bold pt-2" for="email-create-etudiant">Adresse-email</label>
-        <input class="form-control" type="email" name="email-create-etudiant" id="email-create-etudiant" placeholder="nom.prenom-etudiant@school.etu">
+        <label class="form-label text-bold pt-2" for="email-create">Adresse-email</label>
+        <input class="form-control" type="email" name="email-create" id="email-create" placeholder="nom.prenom-etudiant@school.etu">
       </div>
       <div class="mt-3">
         <label class="form-label text-bold" for="password-create-etudiant">Mots de passe</label>
-        <input class="form-control" type="password" name="password-create-etudiant" id="password-create-etudiant" placeholder="Crée un mdp">
+        <input class="form-control" type="password" name="password-create" id="password-create" placeholder="Crée un mdp">
       </div>
       <div class="mt-1">
-        <input class="form-control" type="password" name="password-confirm-etudiant" id="password-confirm-etudiant" placeholder="Répeter le mdp">
+        <input class="form-control" type="password" name="password-confirm" id="password-confirm" placeholder="Répeter le mdp">
       </div>
-      <a class="none-link" href="">MDP oubliez ?</a>
       <br>
       <a href="liste_etudiant.php" class="btn btn-danger mt-2 mb-3">RETOUR</a>
       <button class="btn btn-success mt-2 mb-3" type="submit" name="btn-etudiant-create">INSCRIPTION</button>
@@ -57,6 +54,7 @@ if(isset($_SESSION['email'])){
     die();
   }
 
+
 if(isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_POST['password-create']) && !empty($_POST['password-create'])){
     $emailEtudiant = trim(htmlspecialchars($_POST['email-create']));
     $passwordEtudiant = trim(htmlspecialchars($_POST['password-create']));
@@ -75,9 +73,16 @@ if(isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_PO
 
         if($insertUser == true){
             echo "<div class='container text-center'>
-            <p class='alert alert-success mt-1'>Inscription réussi !</p>
-            <a class='btn btn-success' href='../menu/etudiant_menu.php'>Se connecter</a>
+            <p class='alert alert-success mt-5'>Étudiant crée !</p>
+            <a class='btn btn-success' href='liste_etudiant.php'>Retour panel</a>
             </div>";
+            ?>
+            <style>
+              #false{
+                display: none;
+              }
+            </style>
+            <?php
         }else{
             echo "<div class='container mt-2'>
             <p class='alert alert-danger'>Erreur : l'inscription à échoué !</p></div>";
@@ -90,6 +95,7 @@ if(isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_PO
     echo "<div class='container mt-2'>
     <p class='alert alert-danger'>Erreur : Merci de remplir tout les champs !</p></div>";
 }
+
 
 ?>
 
