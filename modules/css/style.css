@@ -32,13 +32,19 @@
 }
 
 .margin-right-10 {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 /* #etudiant.php */
 
 .card-etudiant {
     width: 50%;
+
+}
+
+.card-etudiant-bis {
+    width: 80%;
+    border-radius: 5px;
 }
 
 .img-etudiant {
@@ -106,4 +112,10 @@
 
 .background-create {
     background-color: green;
+}
+
+/* #liste_etudiant */
+
+.card-list {
+    background-color: black;
 }

@@ -44,21 +44,29 @@ if(isset($_POST['btn-unlog'])){
     <div class="container mt-5 text-center">        
         <div>
         <h3>Liste des Étudiant</h3>
-            <div class="d-flex col-12">
+            <div class="d-flex justify-content-center">
+                <form method="post">
+                    <button class="btn btn-danger margin-right-10" id="btn-unlog" name="btn-back">Retour</button>
+                </form>
+                <a href="inscription.php" class="btn btn-success margin-right-10">Crée un compte</a>
+                <form method="post">
+                    <button class="btn btn-danger" id="btn-unlog" name="btn-unlog">Déconnexion</button>
+                </form>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center mt-2 mb-2">
                 <?php
                     foreach($test as $etudiant){
-                        //$delete = $db->query("DELETE FROM `utilisateurs_etudiant` WHERE `id_etudiant`");
                         ?>
-                        <div class="mt-3">
-                            <div class="card p-4">
-                                <div class="card-title text-center">
-                                    <p class="text">Adresse mail : <?= $etudiant['email']?></p>
-                                    <p class="mt-1">Mot de passe : <?= $etudiant['pass']?></p>
-                                    <form class="" method="get">
-                                        <a name="edit" class="btn btn-warning margin-right-10 ">Modifier</a>
-                                        <a href="delete.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-danger">Supprimer</a>    
-                                    </form>
-                                </div>
+                        <div class="row flex-warp p-2 m-2">
+                            <div class="card-etudiant-bis background-etudiant">
+                                <img class="img-etudiant rounded-circle mt-2" src="../modules/img/etudiant.png" alt="">
+                                <p class=""><?= $etudiant['email']?></p>
+                                <p class="mt-1"><?= $etudiant['pass']?></p>
+                                <form class="card" method="get">
+                                    <a href="edit.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-warning">Modifier</a>
+                                    <a href="delete.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-danger">Supprimer</a>    
+                                </form>
                             </div>
                         </div>
                         <?php
@@ -66,14 +74,15 @@ if(isset($_POST['btn-unlog'])){
                 ?>
             </div>
         </div>
-        <br>
-        <br>
-        <div class="d-flex justify-content-center">
-            <a name="add" href="inscription.php" class="btn btn-success margin-right-10">Crée un compte</a>
-            <form method="post">
-                <button class="btn btn-danger" id="btn-unlog" name="btn-unlog">DECONNEXION</button>
-            </form>
-        </div>
     </div>
+    <?php
+    function back(){
+        header("Location: admin_panel.php");
+    }
+
+    if(isset($_POST['btn-back'])){
+        back();
+    }
+    ?>
 </body>
 </html>

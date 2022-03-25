@@ -74,7 +74,7 @@ if(isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_PO
         if($insertUser == true){
             echo "<div class='container text-center'>
             <p class='alert alert-success mt-5'>Étudiant crée !</p>
-            <a class='btn btn-success' href='liste_etudiant.php'>Retour panel</a>
+            <a class='btn btn-danger' href='liste_etudiant.php'>Retour</a>
             </div>";
             ?>
             <style>
