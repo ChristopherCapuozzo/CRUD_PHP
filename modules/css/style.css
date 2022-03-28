@@ -26,13 +26,17 @@
 }
 
 .img-index {
-    background-position: top;
-    width: 100%;
-    height: 100%;
+    background-position: center;
+    width: 80%;
+    height: min-content;
 }
 
 .margin-right-10 {
     margin-right: 10px;
+}
+
+.h-100 {
+    width: 50%;
 }
 
 /* #etudiant.php */
@@ -118,4 +122,10 @@
 
 .card-list {
     background-color: black;
+}
+
+/* #edit.php */
+
+.display-false {
+    display: none;
 }

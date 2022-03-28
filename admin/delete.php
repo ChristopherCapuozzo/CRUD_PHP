@@ -31,10 +31,10 @@ session_start();
 </head>
 <body>
 
-    <h3 class="text-center mt-5">Voulez vous vraiment Supprimer ?</h3>
-    <div class="container mt-5 d-flex justify-content-center">
+    <h5 class="text-center mt-2">Suprimer l'étudiant</h5>
+    <div class="d-flex justify-content-center">
         <form method="post">
-            <button name="confirm-delete" class="btn btn-success">Oui</button>
+            <button name="confirm-delete" class="btn btn-success mx-2">Oui</button>
         </form>
         <form method="post">
             <button name="btn-return" class="btn btn-danger">Non</button>

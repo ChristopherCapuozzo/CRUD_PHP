@@ -32,5 +32,22 @@ if(isset($_SESSION['email-admin'])){
         </div>
       </div>
     </nav>
+    <form method="post">
+      <button class="btn btn-danger" id="btn-unlog" name="btn-unlog">Déconnexion</button>
+    </form>
+<?php
+
+    function un_log(){
+      session_unset();
+      session_destroy();
+      header("Location: ../index.php");
+    }
+
+
+    if(isset($_POST['btn-unlog'])){
+      un_log();
+    }
+
+?>
 </body>
 </html>

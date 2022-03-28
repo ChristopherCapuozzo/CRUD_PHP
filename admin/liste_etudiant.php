@@ -15,19 +15,16 @@ try {
 }
 
 $sqlSelect ="SELECT * FROM `utilisateurs_etudiant`";
-$test = $db->query($sqlSelect);
+$list = $db->query($sqlSelect);
 
 //================================================================
 
-function un_log(){
-    session_unset();
-    session_destroy();
-    header("Location: ../index.php");
+function back(){
+    header("Location: admin_panel.php");
 }
 
-
-if(isset($_POST['btn-unlog'])){
-    un_log();
+if(isset($_POST['btn-back'])){
+    back();
 }
 
 ?>
@@ -49,40 +46,41 @@ if(isset($_POST['btn-unlog'])){
                     <button class="btn btn-danger margin-right-10" id="btn-unlog" name="btn-back">Retour</button>
                 </form>
                 <a href="inscription.php" class="btn btn-success margin-right-10">Crée un compte</a>
-                <form method="post">
-                    <button class="btn btn-danger" id="btn-unlog" name="btn-unlog">Déconnexion</button>
-                </form>
             </div>
             <hr>
-            <div class="d-flex justify-content-center mt-2 mb-2">
+            <hr>
+            <div class="text-center">
+                <div class="d-flex justify-content-center flex-wrap">
                 <?php
-                    foreach($test as $etudiant){
+                    foreach($list as $etudiant){
                         ?>
-                        <div class="row flex-warp p-2 m-2">
-                            <div class="card-etudiant-bis background-etudiant">
-                                <img class="img-etudiant rounded-circle mt-2" src="../modules/img/etudiant.png" alt="">
-                                <p class=""><?= $etudiant['email']?></p>
-                                <p class="mt-1"><?= $etudiant['pass']?></p>
-                                <form class="card" method="get">
-                                    <a href="edit.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-warning">Modifier</a>
-                                    <a href="delete.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-danger">Supprimer</a>    
-                                </form>
+                        <div class="col-5 mt-3">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <img class="img-etudiant" src="../modules/img/etudiant.png">
+                                    <div class="d-flex justify-content-center">
+                                        <p class="mx-2"><strong>Nom : </strong> <?= $etudiant['nom']?></p>
+                                        <p class=""><strong>Prénom : </strong> <?= $etudiant['prenom']?></p>
+                                    </div>
+                                    <p class=""><strong>Adresse mail :</strong> <?= $etudiant['email']?></p>
+                                    <p class=""><strong>Mot de passe :</strong> <?= $etudiant['pass']?></p>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="mx-3"><strong>Date de naissance :</strong> <?= $etudiant['date_naissance']?></p>
+                                        <p class=""><strong>Classe :</strong> <?= $etudiant['classe']?></p>
+                                    </div>
+                                    <form class="card-footer" method="get">
+                                        <a href="edit.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-warning">Modifier</a>
+                                        <!--<a href="delete.php?id_etudiant=<?= $etudiant['id_etudiant']?>" class="btn btn-danger disabled">Supprimer</a>-->    
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <?php
                     }
                 ?>
+                </div>
             </div>
         </div>
     </div>
-    <?php
-    function back(){
-        header("Location: admin_panel.php");
-    }
-
-    if(isset($_POST['btn-back'])){
-        back();
-    }
-    ?>
 </body>
 </html>

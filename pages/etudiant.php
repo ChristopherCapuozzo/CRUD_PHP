@@ -19,7 +19,7 @@
       <h4>Connexion Étudiant</h4>
     </div>
     <div class="container background-etudiant rounded text-center">
-      <img class="img-etudiant mt-1 rounded-circle" src="../modules/img/etudiant.png" alt="">
+      <img class="img-etudiant mt-2 rounded-circle" src="../modules/img/etudiant.png" alt="">
       <div>
         <label class="form-label text-bold pt-2" for="email-etudiant">Adresse-email</label>
         <input class="form-control" type="email" name="email-etudiant" id="email-etudiant" placeholder="exemple@etudiant.etu">

@@ -15,26 +15,58 @@ session_start();
   
 
 <div class="container-fluid card-etudiant" id="false">
-  <form action="" method="post">
+  <form method="post">
     <div class="text-center mt-5">
       <h4>Inscription Étudiant</h4>
     </div>
     <div class="container background-etudiant rounded text-center">
-      <img class="img-etudiant mt-1 rounded-circle" src="../modules/img/etudiant.png" alt="">
+      <img class="img-etudiant mt-3 rounded-circle" src="../modules/img/etudiant.png" alt="">
+      <div class="d-flex">
+        <div class="col">
+          <label class="form-label text-bold" for="nom-create">Nom</label>
+          <input class="form-control" type="text" name="nom-create" id="nom-create" placeholder="Nom">
+        </div>
+        <div class="col">
+          <label class="form-label text-bold" for="prenom-create">Prénom</label>
+          <input class="form-control" type="text" name="prenom-create" id="prenom-create" placeholder="Prénom">
+        </div>
+      </div>
+
       <div>
-        <label class="form-label text-bold pt-2" for="email-create">Adresse-email</label>
+        <label class="form-label text-bold pt-1" for="email-create">Adresse-email</label>
         <input class="form-control" type="email" name="email-create" id="email-create" placeholder="nom.prenom-etudiant@school.etu">
       </div>
-      <div class="mt-3">
+
+      <div class="pt-2">
         <label class="form-label text-bold" for="password-create-etudiant">Mots de passe</label>
-        <input class="form-control" type="password" name="password-create" id="password-create" placeholder="Crée un mdp">
+        <div class="d-flex">
+          <div class="col">
+            <input class="form-control" type="password" name="password-create" id="password-create" placeholder="Crée un mdp">
+          </div>
+          <div class="col">
+            <input class="form-control" type="password" name="password-confirm" id="password-confirm" placeholder="Répeter le mdp">
+          </div>
+        </div>
       </div>
-      <div class="mt-1">
-        <input class="form-control" type="password" name="password-confirm" id="password-confirm" placeholder="Répeter le mdp">
+      <div class="d-flex pt-2">
+        <div class="col">
+          <label for="date_naissance" class="text-bold">Date de naissance</label>
+          <input class="form-control" type="date" name="date_naissance" id="date_naissance">
+        </div>
+        <div class="col">
+          <label for="classe" class="text-bold">Classe</label>
+          <select class="form-control" type="text" name="classe" id="classe">
+            <option>6ème</option>
+            <option>5ème</option>
+            <option>4ème</option>
+            <option>3ème</option>
+          </select>
+        </div>
       </div>
-      <br>
-      <a href="liste_etudiant.php" class="btn btn-danger mt-2 mb-3">RETOUR</a>
-      <button class="btn btn-success mt-2 mb-3" type="submit" name="btn-etudiant-create">INSCRIPTION</button>
+      <div class="pt-2 pb-2">
+        <a href="liste_etudiant.php" class="btn btn-danger mx-1">RETOUR</a>
+        <button class="btn btn-success" type="submit" name="btn-etudiant-create">VALIDER</button>
+      </div>
     </div>
   </form>
 </div>
@@ -55,20 +87,32 @@ session_start();
   }
 
 
-if(isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_POST['password-create']) && !empty($_POST['password-create'])){
+if(isset($_POST['nom-create']) && !empty($_POST['nom-create']) && isset($_POST['prenom-create']) && !empty($_POST['prenom-create']) && isset($_POST['email-create']) && !empty($_POST['email-create']) && isset($_POST['password-create']) && !empty($_POST['password-create']) && isset($_POST['date_naissance']) && !empty($_POST['date_naissance'])){
+    $nom = trim(htmlspecialchars($_POST['nom-create']));
+    $prenom = trim(htmlspecialchars($_POST['prenom-create']));
     $emailEtudiant = trim(htmlspecialchars($_POST['email-create']));
     $passwordEtudiant = trim(htmlspecialchars($_POST['password-create']));
     $passwordEtudiant_Confirm = trim(htmlspecialchars($_POST['password-confirm']));
+    $date_naissance = $_POST['date_naissance'];
+    $classe = $_POST['classe'];
 
     if($passwordEtudiant === $passwordEtudiant_Confirm){
-        $sql ="INSERT INTO `utilisateurs_etudiant`(`email`, `pass`) VALUES (?,?)";
+        $sql ="INSERT INTO `utilisateurs_etudiant`(`nom`, `prenom`, `email`, `pass`, `date_naissance`, `classe`) VALUES (?,?,?,?,?,?)";
         $insertUser = $db->prepare($sql);
-        $insertUser->bindParam(1, $emailEtudiant);
-        $insertUser->bindParam(2, $passEtudiant);
+        $insertUser->bindParam(1, $nom);
+        $insertUser->bindParam(2, $prenom);
+        $insertUser->bindParam(3, $emailEtudiant);
+        $insertUser->bindParam(4, $passEtudiant);
+        $insertUser->bindParam(5, $date_naissance);
+        $insertUser->bindParam(6, $classe);
 
         $insertUser->execute(array(
+            $nom,
+            $prenom,
             $emailEtudiant,
-            $passwordEtudiant
+            $passwordEtudiant,
+            $date_naissance,
+            $classe
         ));
 
         if($insertUser == true){
